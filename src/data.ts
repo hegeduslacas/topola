@@ -34,6 +34,7 @@ export interface JsonImage {
 /** Json representation of an individual. */
 export interface JsonIndi {
   id: string;
+  prefixName?: string;
   firstName?: string;
   lastName?: string;
   maidenName?: string;
@@ -42,6 +43,7 @@ export interface JsonIndi {
   numberOfChildren?: number;
   numberOfMarriages?: number;
   birth?: JsonEvent;
+  baptism?: JsonEvent;
   death?: JsonEvent;
   sex?: string;
   images?: JsonImage[];
@@ -68,6 +70,7 @@ export interface JsonGedcomData {
 
 /** Details of an individual record. */
 export interface IndiDetails extends Indi {
+  getPrefixName(): string | null;
   getFirstName(): string | null;
   getLastName(): string | null;
   getMaidenName(): string | null;
@@ -76,6 +79,8 @@ export interface IndiDetails extends Indi {
   getMaidenName(): string | null;
   getBirthDate(): DateOrRange | null;
   getBirthPlace(): string | null;
+  getBaptismDate(): DateOrRange | null;
+  getBaptismPlace(): string | null;
   getDeathDate(): DateOrRange | null;
   getDeathPlace(): string | null;
   isConfirmedDeath(): boolean;
@@ -106,6 +111,9 @@ class JsonIndiDetails implements IndiDetails {
   getFamilyAsChild() {
     return this.json.famc || null;
   }
+  getPrefixName() {
+    return this.json.prefixName || null;
+  }
   getFirstName() {
     return this.json.firstName || null;
   }
@@ -114,6 +122,9 @@ class JsonIndiDetails implements IndiDetails {
   }
   getBirthDate() {
     return this.json.birth || null;
+  }
+  getBaptismDate() {
+    return this.json.baptism || null;
   }
   getMaidenName() {
     return this.json.maidenName || null;
@@ -126,6 +137,9 @@ class JsonIndiDetails implements IndiDetails {
   }
   getBirthPlace() {
     return (this.json.birth && this.json.birth.place) || null;
+  }
+  getBaptismPlace() {
+    return (this.json.baptism && this.json.baptism.place) || null;
   }
   getDeathDate() {
     return this.json.death || null;
