@@ -86,7 +86,11 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
     const birthDate =
       indi.getBirthDate() &&
       formatDateOrRange(indi.getBirthDate()!, this.options.locale);
+    const baptismDate =
+      indi.getBaptismDate() &&
+      formatDateOrRange(indi.getBaptismDate()!, this.options.locale);
     const birthPlace = indi.getBirthPlace();
+    const baptismPlace = indi.getBaptismPlace();
     const deathDate =
       indi.getDeathDate() &&
       formatDateOrRange(indi.getDeathDate()!, this.options.locale);
@@ -99,6 +103,15 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
     }
     if (birthDate || birthPlace) {
       detailsList[0].symbol = '*';
+    }
+    if (baptismDate) {
+      detailsList.push({ symbol: '', text: baptismDate });
+    }
+    if (baptismPlace) {
+      detailsList.push({ symbol: '', text: baptismPlace });
+    }
+    if (baptismDate || baptismPlace) {
+      detailsList[0].symbol = '~';
     }
     const listIndex = detailsList.length;
     if (deathDate) {
