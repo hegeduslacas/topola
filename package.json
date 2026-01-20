@@ -2,8 +2,16 @@
   "name": "topola",
   "version": "3.8.1",
   "description": "Topola – online genealogy visualization",
+  "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "build-demo": "esbuild src/index.ts --bundle --outfile=demo/bundle.js --global-name=topola",
@@ -34,10 +42,6 @@
     "jsdom-global": "^3.0.2",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
-    "ts-jest": "^29.2.5",
-    "ts-loader": "^9.5.1",
-    "ts-node": "^10.9.2",
-    "tsify": "^5.0.4",
     "typescript": "^5.7.2"
   },
   "dependencies": {
@@ -48,19 +52,5 @@
     "d3-selection": "^3.0.0",
     "d3-transition": "^3.0.1",
     "parse-gedcom": "^1.0.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/PeWu/topola.git"
-  },
-  "homepage": "https://github.com/PeWu/topola",
-  "bugs": {
-    "url": "https://github.com/PeWu/topola/issues"
-  },
-  "keywords": [
-    "gedcom",
-    "genealogy",
-    "visualization",
-    "family tree"
-  ]
+  }
 }
