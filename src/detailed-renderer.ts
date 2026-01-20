@@ -105,13 +105,10 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
       detailsList[0].symbol = '*';
     }
     if (baptismDate) {
-      detailsList.push({ symbol: '', text: baptismDate });
+      detailsList.push({ symbol: '~', text: baptismDate });
     }
     if (baptismPlace) {
       detailsList.push({ symbol: '', text: baptismPlace });
-    }
-    if (baptismDate || baptismPlace) {
-      detailsList[0].symbol = '~';
     }
     const listIndex = detailsList.length;
     if (deathDate) {
