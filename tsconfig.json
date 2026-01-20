@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "target": "ES5",
-    "lib": ["ES6", "DOM", "ESNext.Array"],
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ES2019", "DOM"],
     "outDir": "./dist",
     "declaration": true,
     "strictNullChecks": true
