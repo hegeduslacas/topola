@@ -488,16 +488,8 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
         )
         .text((node) => getNameLines(node)[1]);
     */
-    enter
-      .append('text')
-      .attr('text-anchor', 'middle')
-      .attr('class', 'name')
-      .attr(
-        'transform',
-        (node) => `translate(${getDetailsWidth(node) / 2}, 17)`,
-      )
-      .text((node) => getIndi(node)!.getFirstName());
-    enter
+
+     enter
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('class', 'name')
@@ -511,6 +503,16 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
         const last = indi.getLastName();
         return [prefix, last].filter(Boolean).join(' ');
       });
+    enter
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('class', 'name')
+      .attr(
+        'transform',
+        (node) => `translate(${getDetailsWidth(node) / 2}, 17)`,
+      )
+      .text((node) => getIndi(node)!.getFirstName());
+
 
     // Extract details.
     const details = new Map<string, DetailsLine[]>();
