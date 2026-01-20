@@ -450,7 +450,7 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
       data.indi.width! - (getIndi(data)!.getImageUrl() ? IMAGE_WIDTH : 0);
 
     // Name.
-    /*
+    
       const getNameLines = (node: any): [string, string] => {
         const indi = getIndi(node)!;
   
@@ -484,8 +484,8 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
           (node) => `translate(${getDetailsWidth(node) / 2}, 33)`
         )
         .text((node) => getNameLines(node)[1]);
-    */
-
+    
+/*
      enter
       .append('text')
       .attr('text-anchor', 'middle')
@@ -509,7 +509,7 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
         (node) => `translate(${getDetailsWidth(node) / 2}, 17)`,
       )
       .text((node) => getIndi(node)!.getFirstName());
-
+*/
 
     // Extract details.
     const details = new Map<string, DetailsLine[]>();
