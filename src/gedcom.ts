@@ -183,8 +183,16 @@ function createIndi(
   };
   const main = nameTags.find((x) => !isMaiden(x));
   const maiden = nameTags.find(isMaiden);
-
+  
+  function getNamePrefix(nameTag: { tree: any }): string | null {
+    const npfx = findTag(nameTag.tree, "NPFX");
+    return npfx ? npfx.data : null;
+  }
   if (main) {
+    var prefix = getNamePrefix(main);
+    if (prefix) {
+      indi.prefixName = prefix;
+    }
     const { firstName, lastName } = extractName(main.data);
     if (firstName) {
       indi.firstName = firstName;
@@ -258,6 +266,12 @@ function createIndi(
   const birth = createEvent(findTag(entry.tree, 'BIRT'));
   if (birth) {
     indi.birth = birth;
+  }
+
+  // Baptism date and place.
+  const baptism = createEvent(findTag(entry.tree, 'CHR'));
+  if (baptism) {
+    indi.baptism = baptism;
   }
 
   // Death date and place.
