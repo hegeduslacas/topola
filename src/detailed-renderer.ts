@@ -160,11 +160,16 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
     const maxDetailsWidth = max(
       details.map((x) => getLength(x.text, 'details')),
     )!;
+
+    const prefix = indi.getPrefixName();
+    const lastName = indi.getLastName();
+    const displayLastName = [prefix, lastName].filter(Boolean).join(' ');
+    
     const width =
       max([
         maxDetailsWidth + 22,
         getLength(indi.getFirstName() || '', 'name') + 8,
-        getLength(indi.getLastName() || '', 'name') + 8,
+        getLength(displayLastName || '', 'name') + 8,
         getLength(id, 'id') + 32,
         INDI_MIN_WIDTH,
       ])! + (indi.getImageUrl() ? IMAGE_WIDTH : 0);
@@ -465,7 +470,12 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
         'transform',
         (node) => `translate(${getDetailsWidth(node) / 2}, 33)`,
       )
-      .text((node) => getIndi(node)!.getLastName());
+      .text((node) => {
+        const indi = getIndi(node)!;
+        const prefix = indi.getPrefixName();
+        const last = indi.getLastName();
+        return [prefix, last].filter(Boolean).join(' ');
+      });
 
     // Extract details.
     const details = new Map<string, DetailsLine[]>();
