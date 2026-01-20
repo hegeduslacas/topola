@@ -453,6 +453,41 @@ export class DetailedRenderer extends CompositeRenderer implements Renderer {
       data.indi.width! - (getIndi(data)!.getImageUrl() ? IMAGE_WIDTH : 0);
 
     // Name.
+    /*
+      const getNameLines = (node: any): [string, string] => {
+        const indi = getIndi(node)!;
+  
+        const first = indi.getFirstName() ?? "";
+        const last = indi.getLastName() ?? "";
+        const prefix = indi.getPrefixName();
+  
+        const lastWithPrefix = [prefix, last].filter(Boolean).join(" ");
+  
+        return indi.nameOrder() === 0
+          ? [first, lastWithPrefix] // English
+          : [lastWithPrefix, first]; // Hungarian
+      };
+  
+      // Name.
+      enter
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("class", "name")
+        .attr(
+          "transform",
+          (node) => `translate(${getDetailsWidth(node) / 2}, 17)`
+        )
+        .text((node) => getNameLines(node)[0]);
+      enter
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("class", "name")
+        .attr(
+          "transform",
+          (node) => `translate(${getDetailsWidth(node) / 2}, 33)`
+        )
+        .text((node) => getNameLines(node)[1]);
+    */
     enter
       .append('text')
       .attr('text-anchor', 'middle')
