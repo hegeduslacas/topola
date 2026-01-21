@@ -1,4 +1,8 @@
 # Topola – online genealogy visualization
+Modified 2026.01.20:
+Name order reversed,
+Show batism date, place,
+Show name prefix
 
 ![npm](https://img.shields.io/npm/v/topola.svg)
 [![Node.js CI](https://github.com/PeWu/topola-viewer/actions/workflows/node.js.yml/badge.svg)](https://github.com/PeWu/topola/actions/workflows/node.js.yml)
